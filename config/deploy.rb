@@ -1,8 +1,24 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.17.1"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :application, "oswaldo"
+set :repo_url, "git@github.com:thekaduu/rails-ec2-example.git"
+
+set :deploy_to, "/var/www/oswaldo"
+set :current, "#{deploy_to}/current"
+
+set :branch, "main"
+
+set :user, 'ubuntu'
+set :runner, 'ubuntu'
+set :group, 'ubuntu'
+set :use_sudo, false
+
+set :rbenv_type, :system
+set :rbenv_ruby, '2.6.6'
+set :rbenv_path, '/home/ubuntu/.rbenv'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
