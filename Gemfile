@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '3.1.3'
 
+gem 'unicorn', '4.8.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use sqlite3 as the database for Active Record
@@ -28,6 +29,12 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+group :production do
+  gem 'execjs', '2.8.1'
+  gem "bugsnag", "~> 6.20"
+  gem 'ddtrace', '1.2.0', require: 'ddtrace/auto_instrument'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -43,13 +50,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem 'capistrano', '~> 3.4'
-  gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-rails', '~> 1.1'
-  gem 'capistrano-bundler', '~> 2.0'
-  gem 'capistrano-postgresql', '~> 4.2.0'
-  gem 'capistrano-rails-console'
-  gem 'capistrano-rails-tail-log'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 
 end
 
