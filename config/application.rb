@@ -10,6 +10,7 @@ module Oswaldo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.assets.precompile += %w('application.css')
 
     # Configuration for the application, engines, and railties goes here.
     #
